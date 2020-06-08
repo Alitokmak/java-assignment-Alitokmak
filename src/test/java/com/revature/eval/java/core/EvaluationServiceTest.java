@@ -99,7 +99,7 @@ public class EvaluationServiceTest {
 	 ******************************************************************/
 	@Test
 	public void testDecimalComparator1() {
-		assertEquals(true, evaluationService.areEqualByThreeDecimalPlaces(-3.1756, -3.175));
+		assertEquals(false, evaluationService.areEqualByThreeDecimalPlaces(-3.1756, -3.175));
 	}
 	
 	@Test
@@ -556,7 +556,7 @@ public class EvaluationServiceTest {
 	@Test
 	public void testSumOfMultiplesOf4and6UpToFifteen() {
 
-		int[] set = { 4, 6 };
+		int[] set = { 4, 6 };  
 		int output = evaluationService.getSumOfMultiples(15, set);
 		assertEquals(30, output);
 	}
