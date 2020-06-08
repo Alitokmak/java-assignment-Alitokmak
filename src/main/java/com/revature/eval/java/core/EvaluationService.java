@@ -472,10 +472,13 @@ public class EvaluationService {
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
 	public String cleanPhoneNumber(String string) {
-		String regex= "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
-		Pattern pattern= Pattern.compile(regex);
-		Matcher matcher=pattern.matcher(string);
-		return matcher.toString();
+		string = string.replaceAll("[^a-zA-Z0-9+]", "");
+		if (string.length() != 10 || string.charAt(0) <= '1' || string.charAt(3) <= '1') {
+			throw new IllegalArgumentException();
+		} else {
+			string = string.substring(string.length() - 10);
+			return string;
+	}
 	}
 
 	/**
